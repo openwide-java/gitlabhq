@@ -31,6 +31,7 @@ class ProjectPolicy < BasePolicy
   end
 
   def guest_access!
+    can! :download_code
     can! :read_project
     can! :read_board
     can! :read_list
@@ -41,7 +42,6 @@ class ProjectPolicy < BasePolicy
     can! :read_project_snippet
     can! :read_project_member
     can! :read_note
-    can! :create_project
     can! :create_issue
     can! :create_note
     can! :upload_file
@@ -50,7 +50,6 @@ class ProjectPolicy < BasePolicy
 
   def reporter_access!
     can! :download_code
-    can! :fork_project
     can! :create_project_snippet
     can! :update_issue
     can! :admin_issue
@@ -76,18 +75,10 @@ class ProjectPolicy < BasePolicy
     can! :update_merge_request
     can! :create_commit_status
     can! :update_commit_status
-    can! :create_build
-    can! :update_build
-    can! :create_pipeline
-    can! :update_pipeline
     can! :create_merge_request
     can! :create_wiki
     can! :push_code
     can! :resolve_note
-    can! :create_container_image
-    can! :update_container_image
-    can! :create_environment
-    can! :create_deployment
   end
 
   def master_access!
@@ -111,7 +102,6 @@ class ProjectPolicy < BasePolicy
 
   def public_access!
     can! :download_code
-    can! :fork_project
     can! :read_commit_status
     can! :read_pipeline
     can! :read_container_image
@@ -127,10 +117,7 @@ class ProjectPolicy < BasePolicy
     master_access!
     can! :change_namespace
     can! :change_visibility_level
-    can! :rename_project
-    can! :remove_project
     can! :archive_project
-    can! :remove_fork_project
     can! :destroy_merge_request
     can! :destroy_issue
   end
