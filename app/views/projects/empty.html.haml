@@ -62,6 +62,6 @@
               git commit
               git push -u origin master
 
-          - if can? current_user, :remove_project, @project
+          -#- if can? current_user, :remove_project, @project
             .prepend-top-20
               = link_to 'Remove project', [@project.namespace.becomes(Namespace), @project], data: { confirm: remove_project_message(@project)}, method: :delete, class: "btn btn-remove pull-right"
