@@ -22,5 +22,5 @@
   .nav-controls{ class: ("nav-controls-new-nav" if show_new_nav?) }
     = render 'shared/projects/search_form'
     = render 'shared/projects/dropdown'
-    - if current_user.can_create_project?
+    -#- if current_user.can_create_project?
       = link_to "New project", new_project_path, class: "btn btn-new #{("visible-xs" if show_new_nav?)}"

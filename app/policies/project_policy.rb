@@ -87,11 +87,6 @@ class ProjectPolicy < BasePolicy
     enable :developer_access
     enable :master_access
 
-    enable :change_namespace
-    enable :change_visibility_level
-    enable :rename_project
-    enable :remove_project
-    enable :archive_project
     enable :remove_fork_project
     enable :destroy_merge_request
     enable :destroy_issue
@@ -114,7 +109,6 @@ class ProjectPolicy < BasePolicy
     enable :read_project_snippet
     enable :read_project_member
     enable :read_note
-    enable :create_project
     enable :create_issue
     enable :create_note
     enable :upload_file
@@ -125,7 +119,6 @@ class ProjectPolicy < BasePolicy
   rule { can?(:reporter_access) }.policy do
     enable :download_code
     enable :download_wiki_code
-    enable :fork_project
     enable :create_project_snippet
     enable :update_issue
     enable :admin_issue
@@ -156,40 +149,23 @@ class ProjectPolicy < BasePolicy
   rule { can?(:developer_access) }.policy do
     enable :admin_merge_request
     enable :update_merge_request
+    enable :create_merge_request
     enable :create_commit_status
     enable :update_commit_status
-    enable :create_build
-    enable :update_build
-    enable :create_pipeline
-    enable :update_pipeline
-    enable :create_pipeline_schedule
-    enable :create_merge_request
     enable :create_wiki
     enable :push_code
     enable :resolve_note
-    enable :create_container_image
-    enable :update_container_image
-    enable :create_environment
-    enable :create_deployment
   end
 
   rule { can?(:master_access) }.policy do
     enable :delete_protected_branch
     enable :update_project_snippet
-    enable :update_environment
-    enable :update_deployment
     enable :admin_milestone
     enable :admin_project_snippet
-    enable :admin_project_member
     enable :admin_note
     enable :admin_wiki
     enable :admin_project
     enable :admin_commit_status
-    enable :admin_build
-    enable :admin_container_image
-    enable :admin_pipeline
-    enable :admin_environment
-    enable :admin_deployment
     enable :admin_pages
     enable :read_pages
     enable :update_pages
@@ -198,7 +174,6 @@ class ProjectPolicy < BasePolicy
   rule { can?(:public_user_access) }.policy do
     enable :public_access
 
-    enable :fork_project
     enable :build_download_code
     enable :build_read_container_image
   end
@@ -241,7 +216,6 @@ class ProjectPolicy < BasePolicy
     prevent :push_code
     prevent :push_code_to_protected_branches
     prevent :download_code
-    prevent :fork_project
     prevent :read_commit_status
   end
 
