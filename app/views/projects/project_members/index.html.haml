@@ -9,7 +9,6 @@
         Add new user to
         %strong= @project.name
       = render "new_project_member"
-
       = render 'shared/members/requests', membership_source: @project, requesters: @requesters
 
   .append-bottom-default.clearfix
