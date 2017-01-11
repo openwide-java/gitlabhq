@@ -21,18 +21,19 @@ class Projects::GitHttpClientController < Projects::ApplicationController
 
     if allow_basic_auth? && basic_auth_provided?
       login, password = user_name_and_password(request)
-      auth_result = Gitlab::Auth.find_for_git_client(login, password, project: project, ip: request.ip)
+      @user = User.by_login(login)
+      #auth_result = Gitlab::Auth.find_for_git_client(login, password, project: project, ip: request.ip)
 
-      if auth_result.type == :ci && download_request?
-        @ci = true
-      elsif auth_result.type == :oauth && !download_request?
-        # Not allowed
-      elsif auth_result.type == :missing_personal_token
-        render_missing_personal_token
-        return # Render above denied access, nothing left to do
-      else
-        @user = auth_result.user
-      end
+      #if auth_result.type == :ci && download_request?
+      #  @ci = true
+      #elsif auth_result.type == :oauth && !download_request?
+      #  # Not allowed
+      #elsif auth_result.type == :missing_personal_token
+      #  render_missing_personal_token
+      #  return # Render above denied access, nothing left to do
+      #else
+      #  @user = auth_result.user
+      #end
 
       if ci? || user
         return # Allow access

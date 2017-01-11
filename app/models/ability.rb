@@ -233,6 +233,7 @@ class Ability
 
     def project_guest_rules
       @project_guest_rules ||= [
+        :download_code,
         :read_project,
         :read_wiki,
         :read_issue,
@@ -243,16 +244,15 @@ class Ability
         :read_project_snippet,
         :read_project_member,
         :read_merge_request,
-        :read_note,
-        :create_project,
-        :create_issue,
-        :create_note,
-        :upload_file
+        :read_note
       ]
     end
 
     def project_report_rules
       @project_report_rules ||= project_guest_rules + [
+        :create_issue,
+        :create_note,
+        :upload_file,
         :download_code,
         :fork_project,
         :create_project_snippet,
@@ -271,6 +271,7 @@ class Ability
 
     def project_dev_rules
       @project_dev_rules ||= project_report_rules + [
+        :create_project,
         :admin_merge_request,
         :update_merge_request,
         :create_commit_status,
