@@ -1,7 +1,7 @@
 - page_title "Members"
 
 .project-members-page.js-project-members-page.prepend-top-default
-  - if can?(current_user, :admin_project_member, @project)
+  -#- if can?(current_user, :admin_project_member, @project)
     .panel.panel-default
       .panel-heading
         Add new user to project
@@ -17,8 +17,8 @@
 
   = render 'team', members: @project_members
 
-  - if @group
+  -#- if @group
     = render "group_members", members: @group_members
 
-  - if @project_group_links.any? && @project.allowed_to_share_with_group?
+  -#- if @project_group_links.any? && @project.allowed_to_share_with_group?
     = render "shared_group_members"
