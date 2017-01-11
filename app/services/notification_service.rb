@@ -13,14 +13,14 @@ class NotificationService
   # even if user disabled notifications
   def new_key(key)
     if key.user
-      mailer.new_ssh_key_email(key.id).deliver_later
+      #mailer.new_ssh_key_email(key.id).deliver_later
     end
   end
 
   # Always notify user about email added to profile
   def new_email(email)
     if email.user
-      mailer.new_email_email(email.id).deliver_later
+      #mailer.new_email_email(email.id).deliver_later
     end
   end
 
@@ -160,7 +160,7 @@ class NotificationService
   # Notify new user with email after creation
   def new_user(user, token = nil)
     # Don't email omniauth created users
-    mailer.new_user_email(user.id, token).deliver_later unless user.identities.any?
+    #mailer.new_user_email(user.id, token).deliver_later unless user.identities.any?
   end
 
   # Notify users on new note in system
@@ -221,63 +221,63 @@ class NotificationService
 
   # Members
   def new_access_request(member)
-    mailer.member_access_requested_email(member.real_source_type, member.id).deliver_later
+    #mailer.member_access_requested_email(member.real_source_type, member.id).deliver_later
   end
 
   def decline_access_request(member)
-    mailer.member_access_denied_email(member.real_source_type, member.source_id, member.user_id).deliver_later
+    #mailer.member_access_denied_email(member.real_source_type, member.source_id, member.user_id).deliver_later
   end
 
   # Project invite
   def invite_project_member(project_member, token)
-    mailer.member_invited_email(project_member.real_source_type, project_member.id, token).deliver_later
+    #mailer.member_invited_email(project_member.real_source_type, project_member.id, token).deliver_later
   end
 
   def accept_project_invite(project_member)
-    mailer.member_invite_accepted_email(project_member.real_source_type, project_member.id).deliver_later
+    #mailer.member_invite_accepted_email(project_member.real_source_type, project_member.id).deliver_later
   end
 
   def decline_project_invite(project_member)
-    mailer.member_invite_declined_email(
-      project_member.real_source_type,
-      project_member.project.id,
-      project_member.invite_email,
-      project_member.created_by_id
-    ).deliver_later
+    #mailer.member_invite_declined_email(
+    #  project_member.real_source_type,
+    #  project_member.project.id,
+    #  project_member.invite_email,
+    #  project_member.created_by_id
+    #).deliver_later
   end
 
   def new_project_member(project_member)
-    mailer.member_access_granted_email(project_member.real_source_type, project_member.id).deliver_later
+    #mailer.member_access_granted_email(project_member.real_source_type, project_member.id).deliver_later
   end
 
   def update_project_member(project_member)
-    mailer.member_access_granted_email(project_member.real_source_type, project_member.id).deliver_later
+    #mailer.member_access_granted_email(project_member.real_source_type, project_member.id).deliver_later
   end
 
   # Group invite
   def invite_group_member(group_member, token)
-    mailer.member_invited_email(group_member.real_source_type, group_member.id, token).deliver_later
+    #mailer.member_invited_email(group_member.real_source_type, group_member.id, token).deliver_later
   end
 
   def accept_group_invite(group_member)
-    mailer.member_invite_accepted_email(group_member.real_source_type, group_member.id).deliver_later
+    #mailer.member_invite_accepted_email(group_member.real_source_type, group_member.id).deliver_later
   end
 
   def decline_group_invite(group_member)
-    mailer.member_invite_declined_email(
-      group_member.real_source_type,
-      group_member.group.id,
-      group_member.invite_email,
-      group_member.created_by_id
-    ).deliver_later
+    #mailer.member_invite_declined_email(
+    #  group_member.real_source_type,
+    #  group_member.group.id,
+    #  group_member.invite_email,
+    #  group_member.created_by_id
+    #).deliver_later
   end
 
   def new_group_member(group_member)
-    mailer.member_access_granted_email(group_member.real_source_type, group_member.id).deliver_later
+    #mailer.member_access_granted_email(group_member.real_source_type, group_member.id).deliver_later
   end
 
   def update_group_member(group_member)
-    mailer.member_access_granted_email(group_member.real_source_type, group_member.id).deliver_later
+    #mailer.member_access_granted_email(group_member.real_source_type, group_member.id).deliver_later
   end
 
   def project_was_moved(project, old_path_with_namespace)

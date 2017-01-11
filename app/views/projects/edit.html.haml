@@ -10,12 +10,12 @@
           .form-group
             = f.label :name, class: 'label-light' do
               Project name
-            = f.text_field :name, class: "form-control", id: "project_name_edit"
+            = f.text_field :name, class: "form-control", id: "project_name_edit", readonly: "readonly"
           .form-group
             = f.label :description, class: 'label-light' do
               Project description
               %span.light (optional)
-            = f.text_area :description, class: "form-control", rows: 3, maxlength: 250
+            = f.text_area :description, class: "form-control", rows: 3, maxlength: 250, readonly: "readonly"
 
           - unless @project.empty_repo?
             .form-group
@@ -25,16 +25,16 @@
           = f.label :visibility_level, class: 'label-light' do
             Visibility Level
             = link_to "(?)", help_page_path("public_access/public_access")
-          - if can_change_visibility_level?(@project, current_user)
+          -#- if can_change_visibility_level?(@project, current_user)
             = render('shared/visibility_radios', model_method: :visibility_level, form: f, selected_level: @project.visibility_level, form_model: @project)
-          - else
-            .info
-              = visibility_level_icon(@project.visibility_level)
-              %strong
-                = visibility_level_label(@project.visibility_level)
-              .light= visibility_level_description(@project.visibility_level, @project)
+          -#- else
+          .info
+            = visibility_level_icon(@project.visibility_level)
+            %strong
+              = visibility_level_label(@project.visibility_level)
+            .light= visibility_level_description(@project.visibility_level, @project)
 
-        .form-group
+        -#.form-group
           = render 'shared/allow_request_access', form: f
 
         .form-group
@@ -185,7 +185,7 @@
             %li LFS objects
             %li Container registry images
   %hr
-  - if can? current_user, :archive_project, @project
+  -#- if can? current_user, :archive_project, @project
     .row.prepend-top-default
       .col-lg-3
         %h4.warning-title.prepend-top-0
@@ -211,8 +211,8 @@
           = link_to 'Archive project', archive_namespace_project_path(@project.namespace, @project),
               data: { confirm: "Are you sure that you want to archive this project?\nAn archived project cannot be committed to." },
               method: :post, class: "btn btn-warning"
-  %hr
-  .row.prepend-top-default
+  -#%hr
+  -#.row.prepend-top-default
     .col-lg-3
       %h4.prepend-top-0.warning-title
         Rename repository
@@ -236,7 +236,7 @@
             %li Be careful. Renaming a project's repository can have unintended side effects.
             %li You will need to update your local repositories to point to the new location.
         = f.submit 'Rename project', class: "btn btn-warning"
-  - if can?(current_user, :change_namespace, @project)
+  -#- if can?(current_user, :change_namespace, @project)
     %hr
     .row.prepend-top-default
       .col-lg-3
@@ -255,7 +255,7 @@
               %li You will need to update your local repositories to point to the new location.
               %li Project visibility level will be changed to match namespace rules when transfering to a group.
           = f.submit 'Transfer project', class: "btn btn-remove js-confirm-danger", data: { "confirm-danger-message" => transfer_project_message(@project) }
-  - if @project.forked? && can?(current_user, :remove_fork_project, @project)
+  -#- if @project.forked? && can?(current_user, :remove_fork_project, @project)
     %hr
     .row.prepend-top-default.append-bottom-default
       .col-lg-3
@@ -271,7 +271,7 @@
           %p
             %strong Once removed, the fork relationship cannot be restored and you will no longer be able to send merge requests to the source.
           = button_to 'Remove fork relationship', '#', class: "btn btn-remove js-confirm-danger", data: { "confirm-danger-message" => remove_fork_project_message(@project) }
-  - if can?(current_user, :remove_project, @project)
+  -#- if can?(current_user, :remove_project, @project)
     %hr
     .row.prepend-top-default.append-bottom-default
       .col-lg-3
