@@ -2,7 +2,7 @@
   - can_admin_group = can?(current_user, :admin_group, @group)
   - can_edit = can?(current_user, :admin_group, @group)
 
-  - if can_admin_group || can_edit
+  -# if can_admin_group || can_edit
     .controls
       .dropdown.group-settings-dropdown
         %a.dropdown-new.btn.btn-default#group-settings-button{ href: '#', 'data-toggle' => 'dropdown' }
