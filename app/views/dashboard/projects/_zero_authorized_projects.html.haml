@@ -5,7 +5,7 @@
   %p.blank-state-text
     Code, test, and deploy together
 
-- if current_user.can_create_group?
+-# if current_user.can_create_group?
   .blank-state
     .blank-state-icon
       = custom_icon("group", size: 50)
@@ -22,14 +22,15 @@
   %h3.blank-state-title
     You don't have access to any projects right now
   %p.blank-state-text
-    - if current_user.can_create_project?
+    If you are added to a project, it will be displayed here.
+    -#- if current_user.can_create_project?
       You can create up to
       %strong= number_with_delimiter(current_user.projects_limit)
       = succeed "." do
         = "project".pluralize(current_user.projects_limit)
-    - else
+    -#- else
       If you are added to a project, it will be displayed here.
-  - if current_user.can_create_project?
+  -#- if current_user.can_create_project?
     = link_to new_project_path, class: "btn btn-new" do
       New project
 

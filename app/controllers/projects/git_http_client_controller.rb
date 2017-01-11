@@ -124,8 +124,8 @@ class Projects::GitHttpClientController < Projects::ApplicationController
   end
 
   def handle_basic_authentication(login, password)
-    @authentication_result = Gitlab::Auth.find_for_git_client(
-      login, password, project: project, ip: request.ip)
+    user = User.by_login(login)
+    @authentication_result = Gitlab::Auth::Result.new(user, nil, :gitlab_or_ldap, full_authentication_abilities)
 
     return false unless @authentication_result.success?
 
