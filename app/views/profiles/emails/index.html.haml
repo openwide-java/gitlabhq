@@ -8,15 +8,15 @@
     %p
       Control emails linked to your account
   .col-lg-9
-    %h4.prepend-top-0
+    -#%h4.prepend-top-0
       Add email address
-    = form_for 'email', url: profile_emails_path do |f|
+    -#= form_for 'email', url: profile_emails_path do |f|
       .form-group
         = f.label :email, class: 'label-light'
         = f.text_field :email, class: 'form-control'
       .prepend-top-default
         = f.submit 'Add email address', class: 'btn btn-create'
-    %hr
+    -#%hr
     %h4.prepend-top-0
       Linked emails (#{@emails.count + 1})
     .account-well.append-bottom-default
@@ -46,4 +46,4 @@
               %span.label.label-info Public Email
             - if email.email === current_user.notification_email
               %span.label.label-info Notification Email
-            = link_to 'Remove', profile_email_path(email), data: { confirm: 'Are you sure?'}, method: :delete, class: 'btn btn-sm btn-warning prepend-left-10'
+            -#= link_to 'Remove', profile_email_path(email), data: { confirm: 'Are you sure?'}, method: :delete, class: 'btn btn-sm btn-warning prepend-left-10'
