@@ -162,6 +162,8 @@ class ProjectPolicy < BasePolicy
     enable :update_project_snippet
     enable :admin_milestone
     enable :admin_project_snippet
+    # 2017-01-19: needed to get rid of 403 on ws provisionning
+    enable :admin_project_member
     enable :admin_note
     enable :admin_wiki
     enable :admin_project
