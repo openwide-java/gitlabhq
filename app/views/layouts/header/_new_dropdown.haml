@@ -4,7 +4,7 @@
     = icon('caret-down')
   .dropdown-menu-nav.dropdown-menu-align-right
     %ul
-      - if @group&.persisted?
+      -#- if @group&.persisted?
         - create_group_project = can?(current_user, :create_projects, @group)
         - create_group_subgroup = can?(current_user, :create_subgroup, @group)
         - if create_group_project || create_group_subgroup
@@ -35,10 +35,10 @@
               = link_to 'New snippet', new_namespace_project_snippet_path(@project.namespace, @project)
           %li.divider
           %li.dropdown-bold-header GitLab
-      - if current_user.can_create_project?
+      -#- if current_user.can_create_project?
         %li
           = link_to 'New project', new_project_path
-      - if current_user.can_create_group?
+      -#- if current_user.can_create_group?
         %li
           = link_to 'New group', new_group_path
       %li
