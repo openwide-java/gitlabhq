@@ -35,7 +35,7 @@
               %li
                 = link_to admin_root_path, title: 'Admin Area', aria: { label: "Admin Area" }, data: {toggle: 'tooltip', placement: 'bottom', container: 'body'} do
                   = icon('wrench fw')
-            - if current_user.can_create_project?
+            -#- if current_user.can_create_project?
               %li
                 = link_to new_project_path, title: 'New project', aria: { label: "New project" }, data: {toggle: 'tooltip', placement: 'bottom', container: 'body'} do
                   = icon('plus fw')
