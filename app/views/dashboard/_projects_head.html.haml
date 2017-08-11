@@ -1,7 +1,7 @@
 = content_for :flash_message do
   = render 'shared/project_limit'
 
-- if show_new_nav? && current_user.can_create_project?
+-#- if show_new_nav? && current_user.can_create_project?
   - content_for :breadcrumbs_extra do
     = link_to "New project", new_project_path, class: 'btn btn-new'
 

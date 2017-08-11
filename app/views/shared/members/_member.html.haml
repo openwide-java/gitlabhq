@@ -96,7 +96,7 @@
             - unless force_mobile_view
               = icon('check inverse', class: 'hidden-xs')
 
-        - if can?(current_user, action_member_permission(:destroy, member), member)
+        -#- if can?(current_user, action_member_permission(:destroy, member), member)
           - if current_user == user
             = link_to icon('sign-out', text: 'Leave'), polymorphic_path([:leave, member.source, :members]),
                       method: :delete,

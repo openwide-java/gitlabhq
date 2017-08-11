@@ -13,7 +13,7 @@
     .nav-controls
       = render 'shared/projects/search_form'
       = render 'shared/projects/dropdown'
-      - if can? current_user, :create_projects, @group
+      -#- if can? current_user, :create_projects, @group
         = link_to new_project_path(namespace_id: @group.id), class: 'btn btn-new pull-right' do
           New Project
 

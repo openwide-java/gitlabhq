@@ -3,8 +3,8 @@
 .project-members-page.prepend-top-default
   %h4
     Members
-  %hr
-  - if can?(current_user, :admin_group_member, @group)
+  -#%hr
+  -#- if can?(current_user, :admin_group_member, @group)
     .project-members-new.append-bottom-default
       %p.clearfix
         Add new member to
