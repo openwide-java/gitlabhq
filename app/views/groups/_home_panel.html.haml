@@ -13,5 +13,5 @@
 
     - if current_user
       .group-buttons
-        = render 'shared/members/access_request_buttons', source: @group
+        -#= render 'shared/members/access_request_buttons', source: @group
         = render 'shared/notifications/button', notification_setting: @notification_setting
