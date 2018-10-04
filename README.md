@@ -1,3 +1,7 @@
+Discontinued
+============
+This repository is no longer actively maintained. Please take a look at the [original repo](https://github.com/gitlabhq/gitlabhq).
+
 # GitLab
 
 [![Build status](https://gitlab.com/gitlab-org/gitlab-ce/badges/master/build.svg)](https://gitlab.com/gitlab-org/gitlab-ce/commits/master)
